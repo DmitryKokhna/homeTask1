@@ -19,20 +19,11 @@ public class WebDriverHT1 {
 
         textField.sendKeys("I can Win");
 
-   //     WebElement selectArrow= driverCh.findElement();
-
-
-
-//title="10 Minutes"
-        //"//*[@class='form-group field-postform-expiration']//*[@title='10 Minutes']"));
-     /*   WebElement pasteExpiration = driverCh.
-                findElement(By.xpath("//*[@id='select2-postform-expiration-container' and @title,'10 Minutes')]"));
-        pasteExpiration.click();
-*/
               WebElement findDropDown = driverCh.findElement(By.id("select2-postform-expiration-container"));
               findDropDown.click();
 
-
+WebElement clickOn10Min= driverCh.findElement(By.xpath("/html/body/span[2]/span/span[2]/ul/li[3]"));
+clickOn10Min.click();
 
     }
 }
