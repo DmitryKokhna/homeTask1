@@ -1,4 +1,4 @@
-package pastebincom;
+package pastebincomHT2.workWithPages;
 
 
 import org.openqa.selenium.By;
@@ -11,7 +11,7 @@ public class WebDriverHT1 {
 /**
 переменные
  */
-    public static String textForPuttiong = "Hello from WedDiver. I can Win";
+    public static String textForPutting = "Hello from WedDiver. I can Win";
     public static String nameTitle = "helloweb";
 
 
@@ -25,7 +25,7 @@ public class WebDriverHT1 {
 // на влякий случай очищаем
         textField.clear();
 // вводим текст
-        textField.sendKeys(textForPuttiong);
+        textField.sendKeys(textForPutting);
 
 // имем выпадающий список
         WebElement findDropDown = driverCh.findElement(By.id("select2-postform-expiration-container"));
