@@ -14,6 +14,13 @@ public class WebDriverHT1 {
     public static String textForPuttiong = "Hello from WedDiver. I can Win";
     public static String nameTitle = "helloweb";
 
+/*
+* git config --global user.name  "New Sheriff in Town"
+git reset $(git commit-tree HEAD^{tree} -m "Legacy code")
+git push origin master --force
+*
+* */
+
 
     public static void main(String[] args) {
 
