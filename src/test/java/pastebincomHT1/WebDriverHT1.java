@@ -6,16 +6,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
 public class WebDriverHT1 {
 
 /**
 переменные
  */
-    public static String textForPutting = "Hello from WedDiver. I can Win";
+   public static String textForPutting = "Hello from WedDiver. I can Win";
     public static String nameTitle = "helloweb";
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         WebDriver driverCh = new ChromeDriver();
 // открываем
@@ -25,7 +32,7 @@ public class WebDriverHT1 {
 // на вcякий случай очищаем
         textField.clear();
 // вводим текст
-        textField.sendKeys(textForPutting);
+      textField.sendKeys(textForPutting);
 
 // имем выпадающий список
         WebElement findDropDown = driverCh.findElement(By.id("select2-postform-expiration-container"));

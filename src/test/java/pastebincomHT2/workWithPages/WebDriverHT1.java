@@ -8,18 +8,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class WebDriverHT1 {
 
-/**
-переменные
- */
-    public static String textForPutting = "Hello from WedDiver. I can Win";
-    public static String nameTitle = "helloweb";
+    /**
+     * переменные
+     */
+    public static String textForPutting =
+            "git config --global user.name  \"New Sheriff in Town\n" +
+             "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\n" +
+              "git push origin master --force";
 
-/*
-* git config --global user.name  "New Sheriff in Town"
-git reset $(git commit-tree HEAD^{tree} -m "Legacy code")
-git push origin master --force
-*
-* */
+    public static String nameTitle = "how to gain dominance among developer";
 
 
     public static void main(String[] args) {
@@ -34,9 +31,19 @@ git push origin master --force
 // вводим текст
         textField.sendKeys(textForPutting);
 
-// имем выпадающий список
+        // ищем выпадающий список для Syntax Highlighting
+        WebElement findDropDownSyntaxHighlighting = driverCh.findElement(By.id("select2-postform-format-container"));
+        // кликаем на выпадающий список Syntax Highlighting
+        findDropDownSyntaxHighlighting.click();
+        // выбираем в Syntax Highlighting параметр Bash
+        WebElement clickBash = driverCh.findElement(By.xpath("/html/body/span[2]/span/span[2]/ul/li[2]/ul/li[1]"));
+// кликаем на Bash мин
+        clickBash.click();
+
+
+// ищем выпадающий список для Paste Expiration
         WebElement findDropDown = driverCh.findElement(By.id("select2-postform-expiration-container"));
-// кликаем на авпадающий список
+// кликаем на выпадающий список
         findDropDown.click();
 
 // ищем 10 мин. как не черех абсолютный путь хз
@@ -52,7 +59,7 @@ git push origin master --force
 // ищем кнопию Отправить
         WebElement buttonSubmit = driverCh.findElement(By.xpath("//*[@type='submit']"));
 // кликаем кнопию отправить
-        buttonSubmit.click();
+      //  buttonSubmit.click();
 
 // для красоты
         System.out.println();
