@@ -39,9 +39,9 @@ public class WebDriverHT1 {
 // кликаем на авпадающий список
         findDropDown.click();
 
-// ищем 10 мин. как не черех абсолютный путь хз
+// ищем 10 мин. как не через абсолютный путь хз
         WebElement clickOn10Min = driverCh.findElement(By.xpath("/html/body/span[2]/span/span[2]/ul/li[3]"));
-// кликаем на 10 мин
+// кликаем на "10 мин"
         clickOn10Min.click();
 
 // ищем поле для Имени
