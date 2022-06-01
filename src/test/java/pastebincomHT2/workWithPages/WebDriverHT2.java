@@ -5,12 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+
 
 public class WebDriverHT2 {
 
@@ -23,11 +25,11 @@ public class WebDriverHT2 {
             "git push origin master --force";
 
     public static String nameTitle = "how to gain dominance among developer";
-
+    public static String hexcolorInDevtools="#c20cb9"; // цвет для сравнения
     public static int numberOfchecking=3;
-    public static int checkTitle;
-    public static int checkSyntax;
-    public static int checkCode;
+    public static int checkTitle=0;
+    public static int checkColor=0;
+    public static int checkCode=0;
 
     @Test (description = "Check Title, syntax highlighted, text is correct")
     public static void main(String[] args) {
@@ -75,15 +77,16 @@ public class WebDriverHT2 {
 // кликаем кнопию отправить
       buttonSubmit.click();
 
-
-
-
 // для красоты
-      //  System.out.println();
-        System.out.println("Checking1");
+       System.out.println();
+
 
         // ждем загрузки элемента
                new WebDriverWait(driverCh, Duration.ofSeconds(2)).until(ExpectedConditions.presenceOfElementLocated(By.className("bash")));
+
+        /**
+         *  тест 1
+         */
 
 // расположение элемента NameTitle
         WebElement elementNameTitle=driverCh.findElement(By.xpath("//div[@class=\"info-top\"]//*[text()=\"how to gain dominance among developer\"]"));
@@ -91,21 +94,46 @@ public class WebDriverHT2 {
         // достаем из элемента текст
         String textFromElementNameTitle=elementNameTitle.getText();
 
+        // проверяем чтобы пройти все 3 проверки. Это первая.
   if(textFromElementNameTitle.equals(nameTitle)) {
       checkTitle=1;
       numberOfchecking=numberOfchecking-1;
          }
-  else {
-      checkTitle=0;
-  }
+
 
           Assert.assertEquals(textFromElementNameTitle,nameTitle);
 
 
-        System.out.println("Цвет проверка начало ");
+        /**
+         *  тест 2
+         */
+
+        // получаем элемент с частью текста
 WebElement colorText=driverCh.findElement(By.xpath("//ol[@class=\"bash\"]//*[contains(text(),\"git config\")]"));
-String color= colorText.getCssValue("c");
-System.out.println("Цвет "+color);
+// часть строки по которой определяем , что текст окрашен
+String coloredString= colorText.getText();
+
+        // ложим в строку RGB текст
+String stringWithRGB= colorText.getCssValue("color");
+
+// конвертируем для сравнения с DevTools
+        String stringHexColor = Color.fromString(stringWithRGB).asHex();
+
+        // проверяем чтобы пройти все 3 проверки. Это вторая.
+        if (stringHexColor.equals(hexcolorInDevtools)) {
+            checkColor=1;
+            numberOfchecking=numberOfchecking-1;
+            }
+               // Проверяем на цвет
+        Assert.assertEquals(stringHexColor, hexcolorInDevtools);
+
+        // Сумма проверок
+System.out.println("Цвет соответствует " + "задан -"+ hexcolorInDevtools+ "; отображен - "+ stringHexColor );
+System.out.println("Проверок пройдено - "+ (checkTitle+checkColor));
+System.out.println("Проверок осталось - " + numberOfchecking);
+
+
+
 
 
 
