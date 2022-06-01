@@ -6,14 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class WebDriverHT1 {
+public class WebDriverHt2 {
 
     /**
      * переменные
@@ -86,7 +85,7 @@ public class WebDriverHT1 {
         // ждем загрузки элемента
                new WebDriverWait(driverCh, Duration.ofSeconds(2)).until(ExpectedConditions.presenceOfElementLocated(By.className("bash")));
 
-// расположение элемента NameTitl
+// расположение элемента NameTitle
         WebElement elementNameTitle=driverCh.findElement(By.xpath("//div[@class=\"info-top\"]//*[text()=\"how to gain dominance among developer\"]"));
 
         // достаем из элемента текст
