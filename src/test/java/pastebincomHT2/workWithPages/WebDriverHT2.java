@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class WebDriverHt2 {
+public class WebDriverHT2 {
 
     /**
      * переменные
