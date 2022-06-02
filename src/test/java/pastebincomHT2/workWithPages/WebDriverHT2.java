@@ -38,13 +38,14 @@ public class WebDriverHT2 {
 
 
         WebDriver driverCh = new ChromeDriver();
-// открываем
 
+// открываем
         driverCh.get("https://pastebin.com/");
 
         // обход ограничения посылок для VPN
-// ожидаем появления PopUp окна
-        driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+// даем время на появление появления PopUp окна
+        driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(2)); // вар 1
+        new WebDriverWait(driverCh, Duration.ofSeconds(2)).wait(1000); // вар 2
 
 // получаем кнопку AGREE
         WebElement agreeButton=driverCh.findElement(By.xpath("//*[@class=\"sc-ifAKCX ljEJIv\"]"));
@@ -53,7 +54,7 @@ public class WebDriverHT2 {
 
 // поиск поля для ввода
         WebElement textField = driverCh.findElement(By.xpath("//*[@id='postform-text' and @name='PostForm[text]']"));
-// на влякий случай очищаем
+// на всякий случай очищаем
         textField.clear();
 // вводим текст
         textField.sendKeys(textForFill);
