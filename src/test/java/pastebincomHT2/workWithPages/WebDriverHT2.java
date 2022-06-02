@@ -44,7 +44,8 @@ public class WebDriverHT2 {
 
         // обход ограничения посылок для VPN
 // ожидаем появления PopUp окна
-        Thread.sleep(2000);
+        driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+
 // получаем кнопку AGREE
         WebElement agreeButton=driverCh.findElement(By.xpath("//*[@class=\"sc-ifAKCX ljEJIv\"]"));
         agreeButton.click();
