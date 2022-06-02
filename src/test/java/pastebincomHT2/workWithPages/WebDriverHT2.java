@@ -26,19 +26,30 @@ public class WebDriverHT2 {
 
     public static String nameTitle = "how to gain dominance among developer"; // вводимый текст в Title/Name
     public static String hexcolorInDevtools = "#c20cb9"; // цвет для сравнения в DevTools
-    public static int numberOfchecking = 3; // количество проверок
+    public static final int numberOfchecking = 3; // количество проверок всего
+
+    public static int numberOfCheckingRest=3; // количество ставшихся проверок. не очень красиво
     public static int checkTitle = 0; // проверка на Title/Name
     public static int checkColor = 0; // проверка на цвет
-    public static int checkCode = 0; // проверка на текст (код)
+    public static int checkText = 0; // проверка на текст (код)
 
     @Test(description = "Check Title, syntax highlighted, text is correct")
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
 
         WebDriver driverCh = new ChromeDriver();
 // открываем
 
         driverCh.get("https://pastebin.com/");
+
+        // обход ограничения посылок для VPN
+// ожидаем появления PopUp окна
+        Thread.sleep(2000);
+// получаем кнопку AGREE
+        WebElement agreeButton=driverCh.findElement(By.xpath("//*[@class=\"sc-ifAKCX ljEJIv\"]"));
+        agreeButton.click();
+
+
 // поиск поля для ввода
         WebElement textField = driverCh.findElement(By.xpath("//*[@id='postform-text' and @name='PostForm[text]']"));
 // на влякий случай очищаем
@@ -101,7 +112,7 @@ public class WebDriverHT2 {
 // проверяем чтобы пройти все 3 проверки. Это первая.
         if (textFromElementNameTitle.equals(nameTitle)) {
             checkTitle = 1;
-            numberOfchecking = numberOfchecking - 1;
+          numberOfCheckingRest = numberOfCheckingRest - 1;
         }
 
 // Основной ассерт 1
@@ -124,21 +135,34 @@ public class WebDriverHT2 {
 // проверяем чтобы пройти все 3 проверки. Это вторая.
         if (stringHexColor.equals(hexcolorInDevtools)) {
             checkColor = 1;
-            numberOfchecking = numberOfchecking - 1;
+            numberOfCheckingRest = numberOfCheckingRest - 1;
         }
 
  // Основной ассерт 2
         Assert.assertEquals(stringHexColor, hexcolorInDevtools);
+      //  System.out.println("Цвет соответствует, " + "задан: " + hexcolorInDevtools + "; отображен: " + stringHexColor);
+
+        /**
+         *  тест 3
+         */
+
+        // получаем элемент в котором текст
+        String textFieldAfterSent= driverCh.findElement(By.xpath("//ol[@class=\"bash\"]")).getText();
+
+        if(textFieldAfterSent.equals(textForFill)){
+            checkText=1;
+            numberOfCheckingRest = numberOfCheckingRest-1;
+        }
+// Основной ассерт 3
+       Assert.assertEquals(textFieldAfterSent,textForFill);
 
 
 
-// Сумма проверок для себя или вообще
-        System.out.println("Цвет соответствует " + "задан -" + hexcolorInDevtools + "; отображен - " + stringHexColor);
-        System.out.println("Проверок пройдено - " + (checkTitle + checkColor));
-        System.out.println("Проверок осталось - " + numberOfchecking);
 
-
-// продолжение
+// Сумма проверок для себя
+        System.out.println("Проверок всего - " + numberOfchecking);
+        System.out.println("Проверок пройдено всего - " + (checkTitle + checkColor + checkText));
+        System.out.println("Проверок осталось - " + numberOfCheckingRest);
 
     }
 }
