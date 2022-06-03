@@ -9,9 +9,7 @@ import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import java.time.Duration;
 
 
@@ -124,6 +122,8 @@ public class WebDriverHT2 {
 // Основной ассерт 1
             Assert.assertEquals(textFromElementNameTitle, nameTitle);
 
+            System.out.println("Первый прошел");
+
 
             /**
              *  тест 2
@@ -146,6 +146,7 @@ public class WebDriverHT2 {
 
             // Основной ассерт 2
             Assert.assertEquals(stringHexColor, hexColorInDevtools);
+        System.out.println("Второй прошел");
             //  System.out.println("Цвет соответствует, " + "задан: " + hexcolorInDevtools + "; отображен: " + stringHexColor);
 
             /**
@@ -161,6 +162,7 @@ public class WebDriverHT2 {
             }
 // Основной ассерт 3
             Assert.assertEquals(textFieldAfterSent,textForFill);
+        System.out.println("Третий прошел");
 
 
 
