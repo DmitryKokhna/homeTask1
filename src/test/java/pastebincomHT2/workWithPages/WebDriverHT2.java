@@ -45,129 +45,141 @@ public class WebDriverHT2 {
 // открываем
         driverCh.get("https://pastebin.com/");
 
+
+        /**
+         *  если без VPN,то код для кнопки AGREE закоментить
+          */
         // обход ограничения посылок для VPN
-// даем время на появление появления PopUp окна
+        // даем время на появление появления PopUp окна
      //   driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(2)); // вар 1
-        new WebDriverWait(driverCh, Duration.ofSeconds(2)).wait(1000); // вар 2
+  //      new WebDriverWait(driverCh, Duration.ofSeconds(2)).wait(1000); // вар 2
 
 // получаем кнопку AGREE
-        WebElement agreeButton=driverCh.findElement(By.xpath("//*[@class=\"sc-ifAKCX ljEJIv\"]"));
-        agreeButton.click();
+    //    WebElement  agreeButton=driverCh.findElement(By.xpath("//*[@class=\"sc-ifAKCX ljEJIv\"]"));
+    //    agreeButton.click();
 
-
-// поиск поля для ввода
-        WebElement textField = driverCh.findElement(By.xpath("//*[@id='postform-text' and @name='PostForm[text]']"));
+       // поиск поля для ввода
+            WebElement textField = driverCh.findElement(By.xpath("//*[@id='postform-text' and @name='PostForm[text]']"));
 // на всякий случай очищаем
-        textField.clear();
+            textField.clear();
 // вводим текст
-        textField.sendKeys(textForFill);
-
+            textField.sendKeys(textForFill);
 
 
 // ищем выпадающий список для Syntax Highlighting
-        WebElement findDropDownSyntaxHighlighting = driverCh.findElement(By.id("select2-postform-format-container"));
-        // кликаем на выпадающий список Syntax Highlighting
-        findDropDownSyntaxHighlighting.click();
+            WebElement findDropDownSyntaxHighlighting = driverCh.findElement(By.id("select2-postform-format-container"));
+            // кликаем на выпадающий список Syntax Highlighting
+            findDropDownSyntaxHighlighting.click();
 // выбираем в Syntax Highlighting параметр "Bash"
-        WebElement clickBash = driverCh.findElement(By.xpath("/html/body/span[2]/span/span[2]/ul/li[2]/ul/li[1]"));
+            WebElement clickBash = driverCh.findElement(By.xpath("/html/body/span[2]/span/span[2]/ul/li[2]/ul/li[1]"));
 // кликаем на Bash мин
-        clickBash.click();
-
+            clickBash.click();
 
 
 // ищем выпадающий список для Paste Expiration
-        WebElement findDropDown = driverCh.findElement(By.id("select2-postform-expiration-container"));
+            WebElement findDropDown = driverCh.findElement(By.id("select2-postform-expiration-container"));
 // кликаем на выпадающий список
-        findDropDown.click();
+            findDropDown.click();
 // ищем "10 мин" как не через абсолютный путь хз
-        WebElement clickOn10Min = driverCh.findElement(By.xpath("/html/body/span[2]/span/span[2]/ul/li[3]"));
+            WebElement clickOn10Min = driverCh.findElement(By.xpath("/html/body/span[2]/span/span[2]/ul/li[3]"));
 // кликаем на "10 мин"
-        clickOn10Min.click();
+            clickOn10Min.click();
 
 
 
 // ищем поле для Имени
-        WebElement pasteNameTitle = driverCh.findElement(By.id("postform-name"));
+            WebElement pasteNameTitle = driverCh.findElement(By.id("postform-name"));
 // пишем в поле заданное имя
-        pasteNameTitle.sendKeys(nameTitle);
+            pasteNameTitle.sendKeys(nameTitle);
 
 // ищем кнопию Отправить
-        WebElement buttonSubmit = driverCh.findElement(By.xpath("//*[@type='submit']"));
+            WebElement buttonSubmit = driverCh.findElement(By.xpath("//*[@type='submit']"));
 // кликаем кнопию отправить
-        buttonSubmit.click();
+            buttonSubmit.click();
 
 
 // для красоты
-        System.out.println();
+            System.out.println();
 
 
 // ждем загрузки элемента
-        new WebDriverWait(driverCh, Duration.ofSeconds(2)).until(ExpectedConditions.presenceOfElementLocated(By.className("bash")));
+            new WebDriverWait(driverCh, Duration.ofSeconds(2)).until(ExpectedConditions.presenceOfElementLocated(By.className("bash")));
 
-        /**
-         *  тест 1
-         */
+            /**
+             *  тест 1
+             */
 
 // расположение элемента NameTitle
-        WebElement elementNameTitle = driverCh.findElement(By.xpath("//div[@class=\"info-top\"]//*[text()=\"how to gain dominance among developer\"]"));
+            WebElement elementNameTitle = driverCh.findElement(By.xpath("//div[@class=\"info-top\"]//*[text()=\"how to gain dominance among developer\"]"));
 
 // достаем из элемента текст
-        String textFromElementNameTitle = elementNameTitle.getText();
+            String textFromElementNameTitle = elementNameTitle.getText();
 
 // проверяем чтобы пройти все 3 проверки. Это первая.
-        if (textFromElementNameTitle.equals(nameTitle)) {
-            checkTitle = 1;
-          numberOfCheckingRest = numberOfCheckingRest - 1;
-        }
+            if (textFromElementNameTitle.equals(nameTitle)) {
+                checkTitle = 1;
+                numberOfCheckingRest = numberOfCheckingRest - 1;
+            }
 
 // Основной ассерт 1
-        Assert.assertEquals(textFromElementNameTitle, nameTitle);
+            Assert.assertEquals(textFromElementNameTitle, nameTitle);
 
 
-        /**
-         *  тест 2
-         */
- // получаем элемент с частью текста
-        WebElement colorText = driverCh.findElement(By.xpath("//ol[@class=\"bash\"]//*[contains(text(),\"git config\")]"));
+            /**
+             *  тест 2
+             */
+            // получаем элемент с частью текста
+            WebElement colorText = driverCh.findElement(By.xpath("//ol[@class=\"bash\"]//*[contains(text(),\"git config\")]"));
 // часть строки по которой определяем , что текст окрашен
-        String coloredString = colorText.getText();
+            String coloredString = colorText.getText();
 
- // ложим в строку RGB текст
-        String stringWithRGB = colorText.getCssValue("color");
+            // ложим в строку RGB текст
+            String stringWithRGB = colorText.getCssValue("color");
 // конвертируем для сравнения с DevTools
-        String stringHexColor = Color.fromString(stringWithRGB).asHex();
+            String stringHexColor = Color.fromString(stringWithRGB).asHex();
 
 // проверяем чтобы пройти все 3 проверки. Это вторая.
-        if (stringHexColor.equals(hexColorInDevtools)) {
-            checkColor = 1;
-            numberOfCheckingRest = numberOfCheckingRest - 1;
-        }
+            if (stringHexColor.equals(hexColorInDevtools)) {
+                checkColor = 1;
+                numberOfCheckingRest = numberOfCheckingRest - 1;
+            }
 
- // Основной ассерт 2
-        Assert.assertEquals(stringHexColor, hexColorInDevtools);
-      //  System.out.println("Цвет соответствует, " + "задан: " + hexcolorInDevtools + "; отображен: " + stringHexColor);
+            // Основной ассерт 2
+            Assert.assertEquals(stringHexColor, hexColorInDevtools);
+            //  System.out.println("Цвет соответствует, " + "задан: " + hexcolorInDevtools + "; отображен: " + stringHexColor);
 
-        /**
-         *  тест 3
-         */
+            /**
+             *  тест 3
+             */
 
-        // получаем элемент в котором текст
-        String textFieldAfterSent= driverCh.findElement(By.xpath("//ol[@class=\"bash\"]")).getText();
+            // получаем элемент в котором текст
+            String textFieldAfterSent= driverCh.findElement(By.xpath("//ol[@class=\"bash\"]")).getText();
 
-        if(textFieldAfterSent.equals(textForFill)){
-            checkText=1;
-            numberOfCheckingRest = numberOfCheckingRest-1;
-        }
+            if(textFieldAfterSent.equals(textForFill)){
+                checkText=1;
+                numberOfCheckingRest = numberOfCheckingRest-1;
+            }
 // Основной ассерт 3
-       Assert.assertEquals(textFieldAfterSent,textForFill);
+            Assert.assertEquals(textFieldAfterSent,textForFill);
 
 
 
 
 // Сумма проверок для себя
-        System.out.println("Проверок всего - " + numberOfchecking);
-        System.out.println("Проверок пройдено всего - " + (checkTitle + checkColor + checkText));
-        System.out.println("Проверок осталось - " + numberOfCheckingRest);
+            System.out.println("Проверок всего - " + numberOfchecking);
+            System.out.println("Проверок пройдено всего - " + (checkTitle + checkColor + checkText));
+            System.out.println("Проверок осталось - " + numberOfCheckingRest);
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }

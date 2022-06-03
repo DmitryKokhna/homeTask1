@@ -49,13 +49,12 @@ public class WebDriverHT1 {
 // пишем в поле заданное имя
         pasteNameTitle.sendKeys(nameTitle);
 
-// ищем кнопию Отправить
+// ищем кнопию "Отправить"
         WebElement buttonSubmit = driverCh.findElement(By.xpath("//*[@type='submit']"));
 // кликаем кнопию отправить
         buttonSubmit.click();
 
 // для красоты
-        System.out.println();
-        System.out.println("The task has been done");
+        System.out.println("\nThe task has been done");
     }
 }
