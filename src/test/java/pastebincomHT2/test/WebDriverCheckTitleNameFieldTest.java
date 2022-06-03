@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.time.Duration;
@@ -15,6 +16,7 @@ import java.time.Duration;
 
 public class WebDriverCheckTitleNameFieldTest {
 
+    public static String url="https://pastebin.com/";  // URL сайта
     public static String nameTitle = "how to gain dominance among developer"; // вводимый текст в Title/Name
     public static String textForFill =
             "git config --global user.name  \"New Sheriff in Town\n" +
@@ -33,7 +35,7 @@ public class WebDriverCheckTitleNameFieldTest {
     public void checkTitleNameFieldTest () {
 
       // открываем
-        driverCh.get("https://pastebin.com/");
+        driverCh.get(url);
 
 
         /**
@@ -47,7 +49,6 @@ public class WebDriverCheckTitleNameFieldTest {
 // получаем кнопку AGREE
            WebElement  agreeButton=driverCh.findElement(By.xpath("//*[@class=\"sc-ifAKCX ljEJIv\"]"));
            agreeButton.click();
-
 
 
         // поиск поля для ввода
@@ -78,7 +79,6 @@ public class WebDriverCheckTitleNameFieldTest {
         clickOn10Min.click();
 
 
-
 // ищем поле для Имени
         WebElement pasteNameTitle = driverCh.findElement(By.id("postform-name"));
 // пишем в поле заданное имя
@@ -89,9 +89,6 @@ public class WebDriverCheckTitleNameFieldTest {
 // кликаем кнопию отправить
         buttonSubmit.click();
 
-
-// для красоты
-        System.out.println();
 
 
 // ждем загрузки элемента
@@ -107,8 +104,15 @@ public class WebDriverCheckTitleNameFieldTest {
 
 // ассерт
         Assert.assertEquals(textFromElementNameTitle, nameTitle, "The Title/Name field is incorrect");
-        driverCh.quit();
 
+
+    }
+
+    @AfterMethod(alwaysRun = true, description ="Quit the browser and setUp the object to null ")
+  public void browserEnd(){
+        driverCh.quit();
+        driverCh=null;
+        System.out.println("\t - = The checking Title/Name has been done = -");
     }
 
 }
