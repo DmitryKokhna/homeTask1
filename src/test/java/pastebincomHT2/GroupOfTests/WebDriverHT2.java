@@ -1,4 +1,4 @@
-package pastebincomHT2.workWithPages;
+package pastebincomHT2.GroupOfTests;
 
 
 import org.openqa.selenium.By;
@@ -24,9 +24,10 @@ public class WebDriverHT2 {
             "git push origin master --force";
 
     public static String nameTitle = "how to gain dominance among developer"; // вводимый текст в Title/Name
-    public static String hexColorInDevtools = "#c20cb9"; // цвет для сравнения в DevTools
-    public static final int numberOfchecking = 3; // количество проверок всего
 
+    public static String syntaxHighlighting="bash";
+    public static String hexColorInDevtools = "#c20cb9"; // цвет для сравнения в DevTools
+    public static final int numberOfChecking = 3; // количество проверок всего
     public static int numberOfCheckingRest=3; // количество ставшихся проверок. не очень красиво
     public static int checkTitle = 0; // проверка на Title/Name
     public static int checkColor = 0; // проверка на цвет
@@ -101,7 +102,7 @@ public class WebDriverHT2 {
 
 
 // ждем загрузки элемента
-            new WebDriverWait(driverCh, Duration.ofSeconds(2)).until(ExpectedConditions.presenceOfElementLocated(By.className("bash")));
+            new WebDriverWait(driverCh, Duration.ofSeconds(2)).until(ExpectedConditions.presenceOfElementLocated(By.className(syntaxHighlighting)));
 
             /**
              *  тест 1
@@ -168,7 +169,7 @@ public class WebDriverHT2 {
 
 
 // Сумма проверок для себя
-            System.out.println("Проверок всего - " + numberOfchecking);
+            System.out.println("Проверок всего - " + numberOfChecking);
             System.out.println("Проверок пройдено всего - " + (checkTitle + checkColor + checkText));
             System.out.println("Проверок осталось - " + numberOfCheckingRest);
 
