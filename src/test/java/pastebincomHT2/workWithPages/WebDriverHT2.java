@@ -32,7 +32,7 @@ public class WebDriverHT2 {
     public static int numberOfCheckingRest=3; // количество ставшихся проверок. не очень красиво
     public static int checkTitle = 0; // проверка на Title/Name
     public static int checkColor = 0; // проверка на цвет
-    public  int checkText = 0; // проверка на текст (код)
+    public static int checkText = 0; // проверка на текст (код)
 
 
     // открываем
