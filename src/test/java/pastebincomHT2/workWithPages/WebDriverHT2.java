@@ -9,6 +9,7 @@ import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -25,26 +26,28 @@ public class WebDriverHT2 {
             "git push origin master --force";
 
     public static String nameTitle = "how to gain dominance among developer"; // вводимый текст в Title/Name
-    public static String hexcolorInDevtools = "#c20cb9"; // цвет для сравнения в DevTools
+    public static String hexColorInDevtools = "#c20cb9"; // цвет для сравнения в DevTools
     public static final int numberOfchecking = 3; // количество проверок всего
 
     public static int numberOfCheckingRest=3; // количество ставшихся проверок. не очень красиво
     public static int checkTitle = 0; // проверка на Title/Name
     public static int checkColor = 0; // проверка на цвет
-    public static int checkText = 0; // проверка на текст (код)
+    public  int checkText = 0; // проверка на текст (код)
 
+
+    // открываем
     @Test(description = "Check Title, syntax highlighted, text is correct")
     public static void main(String[] args) throws InterruptedException {
 
+       WebDriver driverCh= new ChromeDriver();;
 
-        WebDriver driverCh = new ChromeDriver();
 
 // открываем
         driverCh.get("https://pastebin.com/");
 
         // обход ограничения посылок для VPN
 // даем время на появление появления PopUp окна
-        driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(2)); // вар 1
+     //   driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(2)); // вар 1
         new WebDriverWait(driverCh, Duration.ofSeconds(2)).wait(1000); // вар 2
 
 // получаем кнопку AGREE
@@ -135,13 +138,13 @@ public class WebDriverHT2 {
         String stringHexColor = Color.fromString(stringWithRGB).asHex();
 
 // проверяем чтобы пройти все 3 проверки. Это вторая.
-        if (stringHexColor.equals(hexcolorInDevtools)) {
+        if (stringHexColor.equals(hexColorInDevtools)) {
             checkColor = 1;
             numberOfCheckingRest = numberOfCheckingRest - 1;
         }
 
  // Основной ассерт 2
-        Assert.assertEquals(stringHexColor, hexcolorInDevtools);
+        Assert.assertEquals(stringHexColor, hexColorInDevtools);
       //  System.out.println("Цвет соответствует, " + "задан: " + hexcolorInDevtools + "; отображен: " + stringHexColor);
 
         /**
