@@ -33,8 +33,10 @@ public class WebDriverCheckTitleNameFieldTest {
 
 
     private WebDriver driverCh;
+
     @BeforeMethod(alwaysRun = true)
     public void browserSetUp(){
+
         driverCh= new ChromeDriver();
     }
 
@@ -119,7 +121,7 @@ public class WebDriverCheckTitleNameFieldTest {
 
     @AfterMethod(alwaysRun = true, description ="Quit the browser and setUp the object to null ")
     public void browserEnd(){
-        driverCh.quit();
+      //  driverCh.quit();
         driverCh=null;
         System.out.println("\t - = The checking Title/Name has been done = -");
     }
