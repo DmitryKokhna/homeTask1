@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.time.Duration;
 
 public class OpenPage {
-    public WebDriver driverCh;
+    public final WebDriver driverCh;
     public String url = "https://pastebin.com/"; // URL куда ходим
     public String textForFill =
             "git config --global user.name  \"New Sheriff in Town\n" +
@@ -30,7 +30,7 @@ public class OpenPage {
         driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 
         /**
-         *  если без VPN,то код для кнопки AGREE закоментить
+         *  если без VPN,то код для кнопки AGREE закомментить
          */
 // получаем кнопку AGREE, кликаем на кнопию
         driverCh.findElement(By.xpath("//*[@class=\"sc-ifAKCX ljEJIv\"]")).click();
@@ -46,7 +46,6 @@ public class OpenPage {
         textField.clear();
 // вводим текст
         textField.sendKeys(textForFill);
-
 
 // Поле "Syntax Highlighting"
 // ищем выпадающий список, кликаем на выпадающий список
