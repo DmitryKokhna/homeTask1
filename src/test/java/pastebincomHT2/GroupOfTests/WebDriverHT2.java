@@ -1,7 +1,6 @@
 package pastebincomHT2.GroupOfTests;
 
 
-import com.beust.jcommander.Parameter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,7 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import java.time.Duration;
 
@@ -28,7 +26,7 @@ public class WebDriverHT2 {
     public static String textForFill =
             "git config --global user.name  \"New Sheriff in Town\n" +
                     "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
-                    "git push origin master --force"; // вводимый текст в New Past
+                    "git push origin master --force";                                   // вводимый текст в New Past
 
     public static String syntaxHighlighting = "//li[contains(text(),'Bash')]"; // переменная для  типа синтаксиса
     public static String pasteExpiration = "//li[contains(text(),'10 Minutes')]";  // переменная для срока
@@ -48,7 +46,7 @@ public class WebDriverHT2 {
 
 
     @Test(description = "Check Title, syntax highlighted, text is correct")
-    public void checkAllReq() throws InterruptedException {
+    public void checkAllReq() {
 
         // открываем
         driverCh.get(url);
@@ -108,7 +106,6 @@ public class WebDriverHT2 {
         buttonSubmit.click();
 
 
-
 // Страница после отправки
 // ждем загрузки элемента
         driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
@@ -119,7 +116,7 @@ public class WebDriverHT2 {
          */
 
 //Поле "Paste Name / Title"
- // расположение элемента NameTitle
+        // расположение элемента NameTitle
         WebElement elementNameTitle = driverCh.findElement(By.xpath("//div[@class=\"info-top\"]//*[text()=\"how to gain dominance among developer\"]"));
 // достаем из элемента текст
         String textFromElementNameTitle = elementNameTitle.getText();
