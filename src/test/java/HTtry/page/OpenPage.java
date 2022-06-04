@@ -23,7 +23,7 @@ public class OpenPage {
     }
 
 
-    public OpenPage openPage(){
+    public OpenPage openPage() {
 // открываем
         driverCh.get(url);
 // даем время на появление появления PopUp окна
@@ -32,58 +32,45 @@ public class OpenPage {
         /**
          *  если без VPN,то код для кнопки AGREE закоментить
          */
-// получаем кнопку AGREE
-        WebElement agreeButton = driverCh.findElement(By.xpath("//*[@class=\"sc-ifAKCX ljEJIv\"]"));
-        agreeButton.click();
+// получаем кнопку AGREE, кликаем на кнопию
+        driverCh.findElement(By.xpath("//*[@class=\"sc-ifAKCX ljEJIv\"]")).click();
         return this;
     }
 
 
-   public ResultPage filledMainPage() {
+    public ResultPage filledMainPage() {
 //Поле "New Past"
 // поиск поля для ввода
-       WebElement textField = driverCh.findElement(By.xpath("//*[@id='postform-text' and @name='PostForm[text]']"));
+        WebElement textField = driverCh.findElement(By.xpath("//*[@id='postform-text' and @name='PostForm[text]']"));
 // на всякий случай очищаем
-       textField.clear();
+        textField.clear();
 // вводим текст
-       textField.sendKeys(textForFill);
+        textField.sendKeys(textForFill);
 
 
 // Поле "Syntax Highlighting"
-// ищем выпадающий список
-       WebElement findDropDownSyntaxHighlighting = driverCh.findElement(By.id("select2-postform-format-container"));
-// кликаем на выпадающий список
-       findDropDownSyntaxHighlighting.click();
+// ищем выпадающий список, кликаем на выпадающий список
+        driverCh.findElement(By.id("select2-postform-format-container")).click();
 
-// ищем параметр "Bash"
-       WebElement clickBash = driverCh.findElement(By.xpath(syntaxHighlighting));
-// кликаем на "Bash"
-       clickBash.click();
-
+// ищем параметр "Bash", кликаем на "Bash"
+        driverCh.findElement(By.xpath(syntaxHighlighting)).click();
 
 // Поле "Paste Expiration"
-// ищем выпадающий список
-       WebElement findDropDown = driverCh.findElement(By.id("select2-postform-expiration-container"));
-// кликаем на выпадающий список
-       findDropDown.click();
-// ищем параметр "10 минут"
-       WebElement clickOn10Min = driverCh.findElement(By.xpath(pasteExpiration));
-// кликаем на "10 мин"
-       clickOn10Min.click();
+// ищем выпадающий список, кликаем на выпадающий список
+        driverCh.findElement(By.id("select2-postform-expiration-container")).click();
+
+// ищем параметр "10 минут", кликаем на "10 мин"
+        driverCh.findElement(By.xpath(pasteExpiration)).click();
 
 // Поле "Paste Name / Title"
-// ищем поле
-       WebElement pasteNameTitle = driverCh.findElement(By.id("postform-name"));
-// пишем в поле параметр
-       pasteNameTitle.sendKeys(nameTitle);
+// ищем поле, пишем в поле параметр
+        driverCh.findElement(By.id("postform-name")).sendKeys(nameTitle);
 
 // Кнопка "Create New Past"
-// ищем кнопию
-       WebElement buttonSubmit = driverCh.findElement(By.xpath("//*[@type='submit']"));
-// кликаем кнопию
-       buttonSubmit.click();
+// ищем кнопию, кликаем кнопию
+        driverCh.findElement(By.xpath("//*[@type='submit']")).click();
 
-       return new ResultPage(driverCh, textForFill, nameTitle, syntaxHighlighting, pasteExpiration );
-   }
+        return new ResultPage(driverCh, textForFill, nameTitle, syntaxHighlighting, pasteExpiration);
+    }
 
 }

@@ -19,7 +19,6 @@ public class WebDriverTitleNameTest {
     public String syntaxHighlighting = "//li[contains(text(),'Bash')]"; // переменная для типа синтаксиса
     public String pasteExpiration = "//li[contains(text(),'10 Minutes')]";  // переменная для срока
     public String nameTitle = "how to gain dominance among developer"; // вводимый текст в Title/Name
-
     private WebDriver driverCh;
 
     @BeforeMethod(alwaysRun = true)
