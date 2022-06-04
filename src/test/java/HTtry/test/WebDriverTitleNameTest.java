@@ -1,6 +1,7 @@
 package HTtry.test;
 
 import HTtry.page.OpenPage;
+import net.bytebuddy.build.Plugin;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -9,16 +10,15 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
-
 public class WebDriverTitleNameTest {
-    public static String url = "https://pastebin.com/"; // URL куда ходим
-    public static String textForFill =
+    public String url = "https://pastebin.com/"; // URL куда ходим
+    public String textForFill =
             "git config --global user.name  \"New Sheriff in Town\n" +
                     "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
                     "git push origin master --force";                                   // вводимый текст в New Past
-    public static String syntaxHighlighting = "//li[contains(text(),'Bash')]"; // переменная для типа синтаксиса
-    public static String pasteExpiration = "//li[contains(text(),'10 Minutes')]";  // переменная для срока
-    public static String nameTitle = "how to gain dominance among developer"; // вводимый текст в Title/Name
+    public String syntaxHighlighting = "//li[contains(text(),'Bash')]"; // переменная для типа синтаксиса
+    public String pasteExpiration = "//li[contains(text(),'10 Minutes')]";  // переменная для срока
+    public String nameTitle = "how to gain dominance among developer"; // вводимый текст в Title/Name
 
     private WebDriver driverCh;
 
@@ -28,19 +28,16 @@ public class WebDriverTitleNameTest {
         driverCh = new ChromeDriver();
     }
 
-    @Test(description = "testOneByOne fill in Title/Name")
+    @Test(description = "testOneByOne fill in Title/Name", priority = 1)
     public void checkTitleNameFieldTest() {
 
         // открываем
         driverCh.get(url);
 
-  String textFromElementNameTitle=new OpenPage(driverCh)
-          .openPage()
-                  .filledMainPage()
-                          .checkTitleName();
-  System.out.println(" СТРОКА" + textFromElementNameTitle);
-
-
+        String textFromElementNameTitle = new OpenPage(driverCh)
+                .openPage()
+                .filledMainPage()
+                .checkTitleName();
 
         Assert.assertEquals(textFromElementNameTitle, nameTitle, "The Title/Name field is incorrect");
     }
@@ -49,6 +46,6 @@ public class WebDriverTitleNameTest {
     public void browserEnd() {
         //  driverCh.quit();
         driverCh = null;
-        System.out.println("\t - = The checking Title/Name has been done = -");
+        System.out.println("\t - = The checking Title/Name has been done = -  TRY");
     }
 }
