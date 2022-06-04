@@ -3,21 +3,24 @@ package HTtry.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
 
 public class OpenPage {
     public WebDriver driverCh;
-    public  String url = "https://pastebin.com/"; // URL куда ходим
+    public String url = "https://pastebin.com/"; // URL куда ходим
     public String textForFill =
             "git config --global user.name  \"New Sheriff in Town\n" +
                     "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
                     "git push origin master --force";                                   // вводимый текст в New Past
     public  String nameTitle = "how to gain dominance among developer"; // вводимый текст в Title/Name
-    public String syntaxHighlighting = "//li[contains(text(),'Bash')]"; // переменная для  типа синтаксиса
+    public String syntaxHighlighting = "//li[contains(text(),'Bash')]"; // переменная для типа синтаксиса
     public String pasteExpiration = "//li[contains(text(),'10 Minutes')]";  // переменная для срока
 
     public OpenPage(WebDriver driverCh) {
+        this.driverCh = driverCh;
+        PageFactory.initElements(driverCh, this);
     }
 
 
