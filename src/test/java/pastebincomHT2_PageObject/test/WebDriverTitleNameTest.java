@@ -1,7 +1,6 @@
-package HTtry.test;
+package pastebincomHT2_PageObject.test;
 
-import HTtry.page.OpenPage;
-import net.bytebuddy.build.Plugin;
+import pastebincomHT2_PageObject.page.OpenPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -12,12 +11,6 @@ import org.testng.annotations.Test;
 
 public class WebDriverTitleNameTest {
     public String url = "https://pastebin.com/"; // URL куда ходим
-    public String textForFill =
-            "git config --global user.name  \"New Sheriff in Town\n" +
-                    "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
-                    "git push origin master --force";                                   // вводимый текст в New Past
-    public String syntaxHighlighting = "//li[contains(text(),'Bash')]"; // переменная для типа синтаксиса
-    public String pasteExpiration = "//li[contains(text(),'10 Minutes')]";  // переменная для срока
     public String nameTitle = "how to gain dominance among developer"; // вводимый текст в Title/Name
     private WebDriver driverCh;
 
@@ -27,7 +20,7 @@ public class WebDriverTitleNameTest {
         driverCh = new ChromeDriver();
     }
 
-    @Test(description = "testOneByOne fill in Title/Name", priority = 1)
+    @Test(description = "fill in Title/Name", priority = 1)
     public void checkTitleNameFieldTest() {
 
         // открываем

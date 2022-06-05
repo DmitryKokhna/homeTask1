@@ -1,8 +1,9 @@
-package HTtry.page;
+package pastebincomHT2_PageObject.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,6 +34,19 @@ public class ResultPage {
         WebElement elementNameTitle = driverCh.findElement(By.xpath("//div[@class=\"info-top\"]//*[text()=\"how to gain dominance among developer\"]"));
 // достаем из элемента текст
         return elementNameTitle.getText();
+    }
+
+    public String checkColoredText (){
+// получаем элемент с частью текста
+        WebElement colorText = driverCh.findElement(By.xpath("//ol[@class=\"bash\"]//*[contains(text(),\"git config\")]"));
+// часть строки по которой определяем, что текст окрашен
+        String coloredString = colorText.getText();
+
+// ложим в строку RGB текст
+        String stringWithRGB = colorText.getCssValue("color");
+// конвертируем для сравнения с DevTools
+        String stringHexColor = Color.fromString(stringWithRGB).asHex();
+        return stringHexColor;
     }
 
 }
