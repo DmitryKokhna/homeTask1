@@ -21,7 +21,7 @@ public class WebDriverColoredTextTest {
         driverCh = new ChromeDriver();
     }
 
-    @Test(description = "the text is colored", priority = 1)
+    @Test(description = "the text is colored", priority = 2)
     public void checkColoredTextTest() {
 
          driverCh.get(url);
