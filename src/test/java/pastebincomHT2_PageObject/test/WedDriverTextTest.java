@@ -8,6 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pastebincomHT2_PageObject.page.OpenPage;
 
+
+// Можно запустить все 3 теста используя TestNG.xml файл
 public class WedDriverTextTest {
 
     public String url = "https://pastebin.com/"; // URL куда ходим

@@ -8,7 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-
+// Можно запустить все 3 теста используя TestNG.xml файл
 public class WebDriverTitleNameTest {
     public String url = "https://pastebin.com/"; // URL куда ходим
     public String nameTitle = "how to gain dominance among developer"; // вводимый текст в Title/Name

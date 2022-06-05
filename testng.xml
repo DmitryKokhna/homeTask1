@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Dima/IdeaProjects/homeTask1/src/test/java/pastebincomHT2_PageObject/test">
+        <classes><class name="pastebincomHT2_PageObject.test.WebDriverColoredTextTest">
+            <methods><include name="checkColoredTextTest"/></methods>
+        </class>
+            <class name="pastebincomHT2_PageObject.test.WebDriverTitleNameTest">
+                <methods><include name="checkTitleNameFieldTest"/></methods>
+            </class>
+            <class name="pastebincomHT2_PageObject.test.WedDriverTextTest">
+                <methods><include name="checkTextTest"/>
+                </methods></class></classes></test></suite>

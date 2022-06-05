@@ -1,17 +1,11 @@
 package pastebincomHT1;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
+
 
 public class WebDriverHT1 {
 
@@ -21,26 +15,28 @@ public class WebDriverHT1 {
    public static String textForPutting = "Hello from WedDiver. I can Win";
     public static String nameTitle = "helloweb";
 
+    public static String url="https://pastebin.com/";
+
 
     public static void main(String[] args) throws IOException {
 
         WebDriver driverCh = new ChromeDriver();
 // открываем
-        driverCh.get("https://pastebin.com/");
+        driverCh.get(url);
 // поиск поля для ввода
         WebElement textField = driverCh.findElement(By.xpath("//*[@id='postform-text' and @name='PostForm[text]']"));
-// на вcякий случай очищаем
+// на всякий случай очищаем
         textField.clear();
 // вводим текст
       textField.sendKeys(textForPutting);
 
-// имем выпадающий список
+// ищем выпадающий список
         WebElement findDropDown = driverCh.findElement(By.id("select2-postform-expiration-container"));
-// кликаем на авпадающий список
+// кликаем на выпадающий список
         findDropDown.click();
 
-// ищем 10 мин. как не через абсолютный путь хз
-        WebElement clickOn10Min = driverCh.findElement(By.xpath("/html/body/span[2]/span/span[2]/ul/li[3]"));
+// ищем 10 мин.
+        WebElement clickOn10Min = driverCh.findElement(By.xpath("//li[contains(text(),'10 Minutes')]"));
 // кликаем на "10 мин"
         clickOn10Min.click();
 
