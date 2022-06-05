@@ -49,4 +49,9 @@ public class ResultPage {
         return stringHexColor;
     }
 
+    public String  checkTest(){
+        String textFieldAfterSent = driverCh.findElement(By.xpath("//ol[@class=\"bash\"]")).getText();
+        return textFieldAfterSent;
+    }
+
 }

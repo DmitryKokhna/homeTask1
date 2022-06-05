@@ -12,7 +12,6 @@ public class WebDriverColoredTextTest {
 
     public String url = "https://pastebin.com/"; // URL куда ходим
     public static String hexColorInDevtools = "#c20cb9"; // цвет для сравнения в DevTools
-    public String nameTitle = "how to gain dominance among developer"; // вводимый текст в Title/Name
     private WebDriver driverCh;
 
     @BeforeMethod(alwaysRun = true)
@@ -24,12 +23,12 @@ public class WebDriverColoredTextTest {
     @Test(description = "the text is colored", priority = 2)
     public void checkColoredTextTest() {
 
-         driverCh.get(url);
+        driverCh.get(url);
 
         String stringHexColor = new OpenPage(driverCh)
                 .openPage()
-                        .filledMainPage()
-                                .checkColoredText();
+                .filledMainPage()
+                .checkColoredText();
 
         Assert.assertEquals(stringHexColor, hexColorInDevtools);
     }
@@ -38,9 +37,8 @@ public class WebDriverColoredTextTest {
     public void browserEnd() {
         //  driverCh.quit();
         driverCh = null;
-        System.out.println("\t - = The checking Title/Name has been done = -  TRY");
+        System.out.println("\t - = The checking Title/Name has been done = - 2");
     }
-
 
 
 }

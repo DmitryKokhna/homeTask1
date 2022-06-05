@@ -1,17 +1,20 @@
 package pastebincomHT2_PageObject.test;
 
-import pastebincomHT2_PageObject.page.OpenPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pastebincomHT2_PageObject.page.OpenPage;
 
+public class WedDriverTextTest {
 
-public class WebDriverTitleNameTest {
     public String url = "https://pastebin.com/"; // URL куда ходим
-    public String nameTitle = "how to gain dominance among developer"; // вводимый текст в Title/Name
+    public static String textForFill =
+            "git config --global user.name  \"New Sheriff in Town\n" +
+                    "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
+                    "git push origin master --force";                                   // вводимый текст в New Past
     private WebDriver driverCh;
 
     @BeforeMethod(alwaysRun = true)
@@ -20,24 +23,25 @@ public class WebDriverTitleNameTest {
         driverCh = new ChromeDriver();
     }
 
-    @Test(description = "fill in Title/Name", priority = 1)
-    public void checkTitleNameFieldTest() {
+    @Test(description = "There is the text", priority = 3)
+    public void checkTextTest() {
 
-        // открываем
         driverCh.get(url);
 
-        String textFromElementNameTitle = new OpenPage(driverCh)
+        String text = new OpenPage(driverCh)
                 .openPage()
                 .filledMainPage()
-                .checkTitleName();
+                .checkTest();
 
-        Assert.assertEquals(textFromElementNameTitle, nameTitle, "The Title/Name field is incorrect");
+        Assert.assertEquals(text, textForFill);
     }
 
     @AfterMethod(alwaysRun = true, description = "Quit the browser and setUp the object to null ")
     public void browserEnd() {
         //  driverCh.quit();
         driverCh = null;
-        System.out.println("\t - = The checking Title/Name has been done = - 1");
+        System.out.println("\t - = The checking Title/Name has been done = - 3");
     }
+
+
 }
