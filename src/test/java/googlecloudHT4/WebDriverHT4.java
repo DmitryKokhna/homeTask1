@@ -23,11 +23,18 @@ public class WebDriverHT4 {
 
      public String searchTitlePage="//h1[contains(text(), 'Search results for')]";
 
-     public String  locatorAfterSearch ="//*[@id=\"___gcse_0\"]/div/div/div/div[5]/div[2]/div/div/div[1]/div[3]/div[1]/div[1]/div";
-    //*[@id="___gcse_0"]/div/div/div/div[5]/div[2]/div/div/div[1]/div[3]/div[1]/div[1]/div
-           //  "//a[@href='https://cloud.google.com/products/calculator']";
+  public String  locatorAfterSearch ="//a[contains(@href, 'cloud.google.com/products/calculator/')]";
+/*
+/html/body/section/section/main/devsite-content/article/article/div/devsite-cse/devsite-analytics-scope/div/div/div/div/div/div/div[5]/div[2]/div/div/div[1]/div[3]/div[1]/div[3]/div/div[1]/a
+//div[@class='gs-title']//a[@href='https://cloud.google.com/products/calculator/?hl=sv']
+//*[contains(.,'Google Cloud Platform')]  проходит, но нет клика
+//b[contains(.,'Google Cloud Platform')]  не проходит
+//a[@class='gs-title' and @href='https://cloud.google.com/products/calculator/?hl=sv']
+//div[@class='gs-title']//a/@href='https://cloud.google.com/products/calculator/?hl=sv']
+//b[contains(text(),'Google Cloud Platform')]/preceding::a[@href='https://cloud.google.com/products/calculator/?hl=sv']
 
 
+ */
 @Test
     public void  checkCost() {
         WebDriver driverCh = new ChromeDriver();
@@ -42,10 +49,13 @@ public class WebDriverHT4 {
     new WebDriverWait(driverCh, Duration.ofSeconds(2))
             .until(ExpectedConditions.presenceOfElementLocated(By.xpath(searchTitlePage)));
 
-WebElement elementForClick = driverCh.findElement(By.partialLinkText("h1-sv"));
+
+WebElement elementForClick = driverCh.findElement(By.xpath(locatorAfterSearch));
+
+  //  driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 elementForClick.click();
 
-
+driverCh.get("https://cloud.google.com/products/calculator/?hl=sv");
 
   /*   List<WebElement> searchResults= driverCh.findElements(By.xpath(locatorAfterSearch));
 
