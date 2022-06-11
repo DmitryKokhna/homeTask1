@@ -5,17 +5,11 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
-import org.w3c.dom.html.HTMLSelectElement;
-
-import java.security.Key;
 import java.time.Duration;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Set;
 
 public class WebDriverHT4 {
 
@@ -52,6 +46,7 @@ public class WebDriverHT4 {
         driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeForWait));
 // ищем локатор страницы калькулятора
         WebElement elementForClick = driverCh.findElement(By.xpath(locatorAfterSearch));
+        driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 // нажимаем на найденный локатор калькулятора
         elementForClick.click();
 
@@ -69,19 +64,21 @@ public class WebDriverHT4 {
 */
 
 //  попытка2 обойти "НЕПОИСК" элементов
-        driverCh.switchTo().defaultContent();
+     //   driverCh.switchTo().defaultContent();
 
 // приостановка процесса
         Thread.sleep(5000);
+        driverCh.navigate().refresh();
 // поиск фрейма с нужным элементом
-        driverCh.switchTo().frame(driverCh.findElement(By.xpath("//input[@id='input_1629']")));
+      //  driverCh.switchTo().frame(driverCh.findElement(By.xpath("//input[@id='input_1629']")));
 //
 // приостановка процесса
-        Thread.sleep(5000);
+       Thread.sleep(5000);
+
         // попытка найти поле для ввода
-        WebElement instance = driverCh.findElement(By.xpath("//input[@name='quantity' and @id='input_1629']"));
+        WebElement instance = driverCh.findElement(By.xpath("//*[@id='input_85']"));
 // приостановка процесса
-        Thread.sleep(5000);
+      //  Thread.sleep(5000);
 //ввод в поле кол-ва
         instance.sendKeys("2");
 
