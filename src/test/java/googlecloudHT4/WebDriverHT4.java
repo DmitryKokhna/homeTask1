@@ -51,36 +51,26 @@ public class WebDriverHT4 {
         elementForClick.click();
 
 
-
 //  попытка1 обойти "НЕПОИСК" элементов
-   /* String currentTab = driverCh.getWindowHandle();
-    Set<String> tabs = driverCh.getWindowHandles();
 
-    for (String tab : tabs) {
-        if (!currentTab.equals(tab)) {
-            driverCh.switchTo().window(tab);
-        }
-    }
-*/
-
-//  попытка2 обойти "НЕПОИСК" элементов
-     //   driverCh.switchTo().defaultContent();
 
 // приостановка процесса
         Thread.sleep(5000);
-        driverCh.navigate().refresh();
+
 // поиск фрейма с нужным элементом
-      //  driverCh.switchTo().frame(driverCh.findElement(By.xpath("//input[@id='input_1629']")));
-//
+        driverCh.switchTo().frame("https://cloud.google.com/products/calculator/index_d6a98ba38837346d20babc06ff2153b68c2990fa24322fe52c5f83ec3a78c6a0.frame?hl=sv");
+
 // приостановка процесса
-       Thread.sleep(5000);
 
         // попытка найти поле для ввода
-        WebElement instance = driverCh.findElement(By.xpath("//*[@id='input_85']"));
+         WebElement instance = driverCh.findElement(By.id("input_85"));
+
+
 // приостановка процесса
-      //  Thread.sleep(5000);
+       Thread.sleep(1000);
 //ввод в поле кол-ва
-        instance.sendKeys("2");
+        //  instance.sendKeys("2");
+        //  driverCh.switchTo().defaultContent();
 
 
     }
