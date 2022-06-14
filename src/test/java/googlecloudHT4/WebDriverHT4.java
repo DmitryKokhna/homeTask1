@@ -61,11 +61,15 @@ public class WebDriverHT4 {
         driverCh.switchTo().frame(1);
         System.out.println(" фрейм1 найден");
         driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
+ String w= driverCh.getCurrentUrl();
+        System.out.println(" Страница " + w);
+ driverCh.navigate().refresh();
         // попытка найти поле для ввода
-         WebElement instance = driverCh.findElement(By.xpath("//*[@id='input_85']"));
+         WebElement instance = driverCh.findElement(By.cssSelector("#input_85"));
 //   /html/body/md-content/md-card/div/md-card-content[1]/div[2]/div/md-card/md-card-content/div/div[1]/form/div[1]/div[1]/md-input-container/input
 
+
+   //     "//*[@id='input_85']"
 //ввод в поле кол-ва
         instance.sendKeys("2");
        driverCh.switchTo().defaultContent();
