@@ -58,19 +58,17 @@ public class WebDriverHT4 {
         Thread.sleep(5000);
 
 // поиск фрейма с нужным элементом
-        driverCh.switchTo().frame("https://cloud.google.com/products/calculator/index_d6a98ba38837346d20babc06ff2153b68c2990fa24322fe52c5f83ec3a78c6a0.frame?hl=sv");
-
-// приостановка процесса
+        driverCh.switchTo().frame(1);
+        System.out.println(" фрейм1 найден");
+        driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         // попытка найти поле для ввода
-         WebElement instance = driverCh.findElement(By.id("input_85"));
+         WebElement instance = driverCh.findElement(By.xpath("//*[@id='input_85']"));
+//   /html/body/md-content/md-card/div/md-card-content[1]/div[2]/div/md-card/md-card-content/div/div[1]/form/div[1]/div[1]/md-input-container/input
 
-
-// приостановка процесса
-       Thread.sleep(1000);
 //ввод в поле кол-ва
-        //  instance.sendKeys("2");
-        //  driverCh.switchTo().defaultContent();
+        instance.sendKeys("2");
+       driverCh.switchTo().defaultContent();
 
 
     }
