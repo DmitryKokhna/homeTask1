@@ -1,15 +1,13 @@
 package googlecloudHT4;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.google.common.base.Function;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import org.testng.annotations.Test;
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class WebDriverHT4 {
 
@@ -58,21 +56,46 @@ public class WebDriverHT4 {
         Thread.sleep(5000);
 
 // поиск фрейма с нужным элементом
-        driverCh.switchTo().frame(1);
-        System.out.println(" фрейм1 найден");
+   //     driverCh.switchTo().frame(1);
+     //   System.out.println(" фрейм1 найден");
         driverCh.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
- String w= driverCh.getCurrentUrl();
-        System.out.println(" Страница " + w);
- driverCh.navigate().refresh();
+
+WebElement but = driverCh.findElement(By.xpath("//a[@href='https://cloud.google.com/contact?hl=sv']"));
+but.click();
+
+      // new WebDriverWait(driverCh, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("#input_85")));
         // попытка найти поле для ввода
-         WebElement instance = driverCh.findElement(By.cssSelector("#input_85"));
+
+        /*
+        FluentWait wait = new FluentWait(driverCh);
+        wait.withTimeout(Duration.ofSeconds(10));
+        wait.pollingEvery(Duration.ofSeconds(1));
+        wait.ignoring(NoSuchElementException.class);
+        wait.until(ExpectedConditions.alertIsPresent());
+*/
+
+
+     /*   Wait<WebDriver> wait = new FluentWait<WebDriver>(driverCh)
+                .withTimeout(Duration.ofSeconds(10L))
+                .pollingEvery(Duration.ofSeconds(1L))
+                .ignoring(NoSuchElementException.class);
+*/
+
+
+    /*    WebElement instance = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                return driverCh.findElement(By.id("input_85"));
+            }
+        });
+*/
+//   WebElement instance = driverCh.findElement(By.cssSelector("#input_85"));
 //   /html/body/md-content/md-card/div/md-card-content[1]/div[2]/div/md-card/md-card-content/div/div[1]/form/div[1]/div[1]/md-input-container/input
 
 
    //     "//*[@id='input_85']"
 //ввод в поле кол-ва
-        instance.sendKeys("2");
-       driverCh.switchTo().defaultContent();
+   //     instance.sendKeys("2");
+   //    driverCh.switchTo().defaultContent();
 
 
     }
